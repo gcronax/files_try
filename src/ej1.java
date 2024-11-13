@@ -6,9 +6,10 @@ public class ej1 {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         String fdir="/";
-        int n=0;
+
+        int n;
         File[] raices;
-        while (n!=-1){
+        do{
             raices = new File(fdir).listFiles();
             System.out.println("Lista de ficheros y directorios del directorio: "+fdir);
             System.out.println("_________________________________________________");
@@ -27,16 +28,20 @@ public class ej1 {
             if (fdir=="/"){
                 fdir="";
             }
-
-            if (raices[n-1].isFile()){
-                n=-1;
-                System.out.println("no es un directorio");
-            }
-            if (n!=-1){
+            if (n==0){
+                File aux= new File(raices[n].getParent());
+                fdir=String.valueOf(aux.getParent());
+                System.out.println(fdir);
+            } else {
                 fdir= String.valueOf(raices[n-1]);
-
+                if (raices[n-1].isFile()){
+                    n=-1;
+                    System.out.println("no es un directorio");
+                }
             }
 
-        }
+
+
+        }while (n!=-1);
     }
 }

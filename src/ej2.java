@@ -9,6 +9,7 @@ public class ej2 {
         String fdir="/";
         int n=0;
         File[] raices;
+
         while (n!=-1){
             raices = new File(fdir).listFiles();
             System.out.println("Lista de ficheros y directorios del directorio: "+fdir);
