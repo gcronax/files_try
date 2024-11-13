@@ -7,10 +7,10 @@ public class ej2 {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         String fdir="/";
-        int n=0;
-        File[] raices;
 
-        while (n!=-1){
+        int n;
+        File[] raices;
+        do{
             raices = new File(fdir).listFiles();
             System.out.println("Lista de ficheros y directorios del directorio: "+fdir);
             System.out.println("_________________________________________________");
@@ -71,7 +71,11 @@ public class ej2 {
             if (fdir=="/"){
                 fdir="";
             }
-            if (n!=-1){
+            if (n==0){
+                File aux= new File(raices[n].getParent());
+                fdir=String.valueOf(aux.getParent());
+                System.out.println(fdir);
+            } else {
                 fdir= String.valueOf(raices[n-1]);
                 if (raices[n-1].isFile()){
                     n=-1;
@@ -79,6 +83,6 @@ public class ej2 {
                 }
             }
 
-        }
+        }while (n!=-1);
     }
 }
